@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Array Data</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/app.css">
+</head>
+<body class="p-5">
+<div id="app">
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Sıra No</th>
+            <th scope="col">id</th>
+            <th scope="col">İsimler</th>
+            <th scope="col">Rol</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for="user, index in users">
+            <td>{{index}}</td>
+            <td>{{user.id}}</td>
+            <td>{{user.isim}}</td>
+            <td>{{user.role}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<script src="../assets/js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el: '#app',
+        name: 'Test Vue Example',
+        data: {
+            users:[
+                {
+                    id:1,
+                    isim:'Semiha',
+                    role:'Admin',
+                },
+                {
+                    id:3,
+                    isim:'Ömer',
+                    role:'User'
+                },
+                {
+                    id:2,
+                    isim:'Tets',
+                    role:'Admin'
+                },
+            ],
+        }
+    })
+</script>
+</body>
+</html>

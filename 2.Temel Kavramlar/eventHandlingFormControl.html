@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form Control</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/app.css">
+</head>
+<body class="p-5">
+<div id="app">
+
+    <form>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1"
+                       aria-describedby="emailHelp"
+                   v-model="email" v-on:keypress.enter="format" >
+            <small id="emailHelp" class="form-text text-muted">{{emailFormat}}</small>
+        </div>
+
+    </form>
+
+  
+
+
+</div>
+
+<script src="../assets/js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el: '#app',
+        name: 'Test Vue Example',
+        data: {
+            emailFormat:'',
+
+        },
+        methods:{
+            format(){
+                if(this.email!=null){
+                    this.emailFormat=this.email.concat("@abc.com.tr")
+                }
+
+            }
+        }
+    })
+</script>
+</body>
+</html>

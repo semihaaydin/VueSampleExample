@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Array Data</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/app.css">
+</head>
+<body class="p-5">
+<div id="app">
+    <div class="alert-success">
+        {{mesaj}}
+    </div>
+    <div>
+        <button type="button" class="btn btn-success" v-on:click="goster">Katılım</button>
+        <button type="button" class="btn btn-info" v-on:click="vazgec">Vazgec</button>
+    </div>
+
+    <br>
+    <br>
+    <br><br>
+    <br>
+
+
+
+
+</div>
+
+<script src="../assets/js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el: '#app',
+        name: 'Test Vue Example',
+        data: {
+            mesaj:'Merhaba',
+            mesajEmail:'',
+
+        },
+        methods:{
+            goster() {
+                this.mesaj="Hoşgeldiniz"
+            },
+            vazgec(){
+                this.mesaj="Güle Güle"
+            },
+            saveMail(){
+                this.mesajEmail="email kaydedildi"
+            },
+            saveUserName(){
+                console.log("çalıştım");
+
+            }
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/app.css">
+</head>
+<body class="p-5">
+<div id="app">
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">@</span>
+        </div>
+        <input type="text"  v-model="kullanici.isim"
+        :class="{'form-control is-valid':kullanici.isim , 'form-control is-invalid':!kullanici.isim }">
+
+    </div>
+    <span>{{kullanici.isim.length}} karakter girdiniz</span>
+</div>
+
+<script src="../assets/js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el: '#app',
+        name: 'Test Vue Example',
+        data: {
+            mesaj:"Merhaba Vue",
+            kullanici:{
+                isim:'semiha',
+                soyisim:'aydin',
+                number:'5077461917',
+                sicilNo:'85475847125',
+
+            },
+        }
+    })
+</script>
+</body>
+</html>

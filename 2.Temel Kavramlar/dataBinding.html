@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/app.css">
+</head>
+<body class="p-5">
+<div id="app">
+    <span class="badge badge-danger">{{sayi}}</span>
+    <p v-text="mesaj"></p>
+    <p v-html="mesaj_html"></p>
+    <hr>
+    <div>
+        <label>Ücret</label>
+        <input type="text" v-model.number="fiyat" class="form-control" >
+        <span>KDV Tutar:{{fiyat*0.18}}</span><br>
+        <span>{{fiyat*0.18<5 ? 'KDV Düşük':'KDV Yüksek' }}</span>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div>
+        <label>Link</label>
+        <a :href="linkSite" >Udemy'e git</a>
+        <a :href="linkSite" >Udemy'e git</a>
+    </div>
+    <br>
+    <br>
+    <br>
+    <select v-model="secilenSitil">
+        <option>alert alert-success</option>
+        <option>alert alert-danger</option>
+        <option>alert alert-info</option>
+        <option>alert alert-warning</option>
+    </select>
+    <div :class="secilenSitil">Merhaba</div>
+    <div :class="[secilenSitil,'alert alert-success']">Merhaba</div>
+
+</div>
+
+<script src="../assets/js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el: '#app',
+        name: 'Test Vue Example',
+        data: {
+            mesaj:'Hello Vue Uygulaması',
+            mesaj_html:'<b>Hello Vue Html</b>',
+            fiyat:0,
+            linkSite:'https://www.udemy.com/',
+            id:5,
+            secilenSitil:'alert alert-success'
+        },
+        created(){
+            console.log("instance olustu");
+        },
+        mounted(){
+            console.log("DOM eklendi");
+            this.sayi=Math.floor(Math.random()+30);
+            app.$destroy();
+        },
+        updated(){
+            console.log("Dom güncellendi");
+        }
+    })
+</script>
+</body>
+</html>
