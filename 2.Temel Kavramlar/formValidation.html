@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="../assets/css/app.css">
+</head>
+<body class="p-5">
+<div id="app">
+        <form action="#" >
+            <div v-if="errors.length>0" class="alert-danger"> Lütfen form verilerini düzeltiniz
+                <ul>
+                    <li v-for="error in errors" >{{error}}</li>
+                </ul>
+            </div>
+            <div class="form-group">
+                <label>Ad Soyad</label>
+                <input type="text" id="adSoyad" v-model="adSoyad" class="form-control col-lg-6" >
+            </div>
+
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" id="email" v-model="email" class="form-control col-lg-6" >
+            </div>
+
+            <div class="form-group">
+                <label>Şifre</label>
+                <input type="text" id="sifre" v-model="sifre" class="form-control col-lg-6" >
+            </div>
+
+            <div class="form-group">
+                <label>Şifre</label>
+                <input type="text" id="sifre2" v-model="sifre2" class="form-control col-lg-6" >
+            </div>
+
+            <button type="submit" @click="kaydet()">Kaydet</button>
+        </form>
+</div>
+
+<script src="../assets/js/vue.js"></script>
+<script src="../assets/js/jquery-2.2.4.min.js"></script>
+<script>
+    const app = new Vue({
+        el: '#app',
+        name: 'Test Vue Example',
+        data: {
+            errors:[],
+            adSoyad:'',
+            sifre:'',
+            sifre2:'',
+            email:'',
+            ilgi_alanlari:[],
+        },
+        methods:{
+            kaydet(e){
+                e.preventDefault();
+                this.errors=[];
+                debugger;
+                if(!this.adSoyad){
+                    this.errors.push('Ad Soyad Gerekli');
+                }
+                if(!this.validEmail(this.email)){
+                    this.errors.push('Email Gerekli');
+                }
+                if(!this.sifre && !this.sifre2){
+                    this.errors.push('Şifre Gerekli');
+                }
+
+                if(!this.sifre !== !this.sifre2){
+                    this.errors.push('Şifre ler eşlemiyor');
+                }
+
+                if(this.errors.length===0){
+                    console.log("Form Kaydedildi");
+
+                }else{
+                    console.log("Form hatalı");
+
+                }
+            },
+            validEmail: function (email) {
+                var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                return re.test(email);
+            }
+        }
+    })
+</script>
+</body>
+</html>

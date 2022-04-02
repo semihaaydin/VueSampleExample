@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/app.css">
+</head>
+<body class="p-5">
+<div id="app">
+    <form>
+        <input class="form-control" type="number" v-model="odun">
+        <input class="form-control" type="number" v-model="tas">
+        <input class="form-control" type="number" v-model="toplam">
+    </form>
+
+
+</div>
+
+<script src="../assets/js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el: '#app',
+        name: 'Test Vue Example',
+        data: {
+            odun:0,
+            tas:0,
+            toplam:0
+        },
+        watch:{
+            odun(value){
+
+                this.toplam=parseInt(this.odun)+parseInt(this.tas);
+            },
+            tas(value){
+                this.toplam=parseInt(this.odun)+parseInt(this.tas);
+            }
+
+        }
+    })
+</script>
+</body>
+</html>

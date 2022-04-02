@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/app.css">
+</head>
+<body class="p-5">
+<div id="app">
+<form>
+    <label>Adınız</label>
+    <input type="text" v-model="kullanici.adi" class="form-control">
+
+    <label>Adres</label>
+    <textarea type="text" v-model="kullanici.adres" class="form-control"></textarea>
+
+    <label>Checbox</label>
+    <input type="checkbox" v-model="kullanici.aktif" class="form-control"></input>
+
+    <label>
+    <input type="checkbox" v-model="kullanici.secilen_roller" class="form-control" value="Yönetici">Yönetici
+    </label>
+    <label>
+    <input type="checkbox" v-model="kullanici.secilen_roller" class="form-control" value="Müşteri">Müşteri
+    </label>
+    <label>
+    <input type="checkbox" v-model="kullanici.secilen_roller" class="form-control" value="Satış">Satış
+    </label>
+
+    {{}}
+
+    <label>
+    <select v-model="kullanici.secilen_roller" multiple>
+        <option value="Yönetici" >Yönetici</option>
+        <option value="Müşteri">Müşteri</option>
+        <option value="Satış">Satış</option>
+    </select>
+    </label>
+
+    <br>
+    <label>
+        <input type="radio" v-model="kullanici.gender" value="K"> Kadın
+        <input type="radio" v-model="kullanici.gender" value="E"> Erkek
+    </label>
+
+    {{kullanici.gender}}
+
+    <br>
+
+    <label>Doğum Yeri</label>
+    <select v-model="kullanici.dogumYeri">
+        <option value="0"> Seçiniz</option>
+        <option v-for="sehir in kullanici.sehirler" v-bind:value="sehir.value">{{sehir.text}}</option>
+    </select>
+
+
+
+</form>
+</div>
+
+<script src="../assets/js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el: '#app',
+        name: 'Test Vue Example',
+        data: {
+
+            kullanici: {
+                adi:"Semiha",
+                adres:"fsvsvsfvfvfdvfvsdvdsnvsdcbdsvbssdcvsdvbsdbvsdvsdbvsdbvsdvsbvsbvsvbs",
+                aktif:true,
+                secilen_roller:[],
+                gender:'K',
+                dogumYeri:6,
+                sehirler:[
+                    {text:"Ankara",value:6},
+                    {text:"Mersin",value:33},
+                    {text:"İstanbul",value:34}
+                ],
+            }
+        }
+    })
+</script>
+</body>
+</html>

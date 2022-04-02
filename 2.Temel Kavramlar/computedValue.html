@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/app.css">
+</head>
+<body class="p-5">
+<div id="app">
+        <input type="text" class="form-control" v-model="ad">
+        <input type="text" class="form-control" v-model="soyad">
+            {{adSoyad}}
+    <br>
+    {{adSoyad2}}
+    <br>
+    {{adSoyad3()}}
+
+    <br>
+    <ul>
+        <li v-for="kullanici in kullanicilar">
+            {{kullanici}}
+        </li>
+    </ul>
+<br>
+    <ul>
+        <li v-for="kullanici in s_ile_baslayan">
+            {{kullanici}}
+        </li>
+    </ul>
+</div>
+
+<script src="../assets/js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el: '#app',
+        name: 'Test Vue Example',
+        data: {
+            ad:"Semiha",
+            soyad:"Aydin",
+            kullanicilar: ["Semiha","Semih","Mehmet","Ayşe","Fatma"],
+        },
+        methods:{
+            adSoyad3(){
+                return this.ad + " " + this.soyad;
+            },
+
+        },
+        computed:{
+            adSoyad(){
+                console.log("//cachleme yapmaktadır")
+                return this.ad + " " + this.soyad;
+            },
+            adSoyad2:{
+                get:function(){
+                    return this.ad + " " + this.soyad;
+                },
+                set:function(value){
+                    let pars=value.split('');
+                    this.ad=pars[0];
+                    this.soyad=pars[1];
+                }
+            },
+            s_ile_baslayan(){
+                return this.kullanicilar.filter(k=>k.startsWith('S'));
+            }
+
+        }
+    })
+</script>
+</body>
+</html>
