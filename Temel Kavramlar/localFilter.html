@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/app.css">
+</head>
+<body class="p-5">
+<div id="app">
+        {{mesaj | upperCase  }}
+<br>
+    {{mesaj | lowerCase  }}
+<br>
+    {{mesaj | camelCase  }}
+<br>
+    {{mesaj | firstWordUper  }}
+</div>
+
+<script src="../assets/js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el: '#app',
+        name: 'Test Vue Example',
+        data: {
+            mesaj:"neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
+            adSoyad:"Semiha Aydin",
+        },
+        filters:{
+            upperCase(value){
+                return value.toString().toLocaleUpperCase('tr-TR');
+            },
+            lowerCase(value){
+                return value.toString().toLocaleLowerCase('tr-TR');
+            },
+            camelCase(value){
+                return value.toString().charAt(0).toUpperCase()+value.slice(1);
+            },
+            firstWordUper(value){
+                let kelimeler=value.toString().split(' ');
+                let donenDeger='';
+                kelimeler.forEach(word=>{
+                    donenDeger += word.toString().charAt(0).toUpperCase() + word.slice(1) + ' ';
+                });
+                return donenDeger;
+            },
+        }
+    })
+</script>
+</body>
+</html>

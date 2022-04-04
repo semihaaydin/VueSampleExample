@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/app.css">
+</head>
+<body class="p-5">
+<div id="app">
+        <div v-alert="'success'">{{baslik}}</div>
+    <input type="text" v-model="tarihSaat"  class="form-control col-4">
+    <input type="text" v-model="tarihSaat" v-dateTime:date="tarihSaat" class="form-control col-4">
+    <input type="text" v-model="tarihSaat" v-dateTime:time="tarihSaat" class="form-control col-4">
+
+</div>
+
+<script src="../assets/js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el: '#app',
+        name: 'Test Vue Example',
+        data: {
+            baslik:"neque porro quisquam est",
+            adSoyad:"Semiha Aydin",
+            tarihSaat:'2018-06-24 10:12:00',
+        },
+        directives:{
+            alert:function (el,binding){
+                el.setAttribute('class','alert alert-'+binding.value);
+            },
+            datetime:function (el,binding){
+                if(binding.arg==='date')
+                    el.value = new Date(binding.value).toLocaleDateString();
+                else{
+                    el.value = new Date(binding.value).toLocaleTimeString();
+                }
+            }
+        }
+    })
+</script>
+</body>
+</html>
