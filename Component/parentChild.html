@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/app.css">
+</head>
+<body class="p-5">
+<div id="app">
+    <parent></parent>
+
+</div>
+<script src="../assets/js/vue.js"></script>
+<script>
+    Vue.component('parent',{
+        data(){
+            return {
+                parentMessage:'',
+            }
+        },
+        methods: {
+            childChange(msg){
+                this.parentMessage=msg;
+            }
+        },
+
+             template: '<div class="card text-white bg-secondary mb-3">' +
+                 '<div class="card-header">Parent</div>' +
+                 '<div class="card-body">Parent Message:{{parentMessage}}</div>' +
+                 '<hr>' +
+                 '<child @onchange="childChange"></child>' +
+                 '</div>'
+    });
+
+    Vue.component('child',{
+        data(){
+            return {
+                childMesagge:'',
+            }
+        },
+        methods:{
+                changeParentMessage(){
+                    this.$parent.$data.parentMessage=this.childMesagge;
+                },
+                changeParentMessage2(){
+                    this.$emit('onchange',this.childMesagge);
+                }
+        },
+        template: '<div class="card text-white bg-success mb-3">' +
+            '<div class="card-header">Child</div>' +
+            '<div class="card-body">Child Message:{{childMesagge}}</div>' +
+            '<div class="form-inline">' +
+            '<input v-model="childMesagge" class="form-control" >' +
+            '<button @click="changeParentMessage" class="btn btn-warning" > Change Parent Message</button>' +
+            '<button @click="changeParentMessage2" class="btn btn-warning" > EmitMessage</button>' +
+            '</div>' +
+            '</div>'
+    });
+
+    const app = new Vue({
+        el: '#app',
+        name: 'Test Vue Example',
+        data: {
+            mesaj:"Merhaba Vue",
+        }
+    })
+</script>
+</body>
+</html>

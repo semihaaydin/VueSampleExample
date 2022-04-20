@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/app.css">
+</head>
+<body class="p-5">
+<div id="app">
+    <card-item></card-item>
+
+</div>
+<script src="../assets/js/vue.js"></script>
+<script>
+    Vue.component('CardItem',{
+        data(){
+            return {
+                parentMessage:'',
+            }
+        },
+        methods: {
+            showDetail(){
+
+            }
+        },
+
+             template: '<div class="card" > ' +
+                 '  <img class="card-img-top" src="..." alt="Card image cap"> ' +
+                 '  <div class="card-body"> ' +
+                 '    <h5 class="card-title">Card title</h5> ' +
+                 '    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card\'s content.</p> ' +
+                 '    <a href="javascript;" class="btn btn-primary" @click="showDetail">Detay</a> ' +
+                 '  </div> ' +
+                 '</div>'
+    });
+
+    const app = new Vue({
+        el: '#app',
+        name: 'Test Vue Example',
+        data: {
+            mesaj:"Merhaba Vue",
+        }
+    })
+</script>
+</body>
+</html>

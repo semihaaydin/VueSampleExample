@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/app.css">
+</head>
+<body class="p-5">
+<div id="app">
+    <parent></parent>
+
+</div>
+<script src="../assets/js/vue.js"></script>
+<script>
+    Vue.component('parent',{
+        data(){
+            return {
+                parentMessage:'',
+            }
+        },
+        methods: {
+            callChildMethods(){
+                this.$refs.child1.childMethods();
+            },
+            callParentMethods() {
+                console.log("Call Parent Methos");
+            }
+        },
+
+             template: '<div class="card text-white bg-secondary mb-3">' +
+                 '<div class="card-header">Parent</div>' +
+                 '<div class="card-body">Parent Message:{{parentMessage}}</div>' +
+                 '<hr>' +
+                 '<button @click="callChildMethods" class="btn btn-danger">Call Child Methods</button>' +
+                 '<child ref="child1"></child>' +
+                 '</div>'
+    });
+
+    Vue.component('child',{
+        data(){
+            return {
+                childMesagge:'',
+            }
+        },
+        methods:{
+            childMethods(){
+                console.log("Child Method Çağırıldı");
+            },
+            callParentMethods(){
+                this.$parent.callParentMethods();
+            }
+        },
+        template: '<div class="card text-white bg-success mb-3">' +
+            '<div class="card-header">Child</div>' +
+            '<div class="card-body">Child Message:{{childMesagge}}</div>' +
+            '<div class="form-inline">' +
+            '<button @click="callParentMethods" class="btn btn-info">Call Parent Methods</button>' +
+            '</div>' +
+            '</div>'
+    });
+
+    const app = new Vue({
+        el: '#app',
+        name: 'Test Vue Example',
+        data: {
+            mesaj:"Merhaba Vue",
+        }
+    })
+</script>
+</body>
+</html>

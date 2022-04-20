@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/app.css">
+</head>
+<body class="p-5">
+<div id="app">
+    <alert-hello>Merhaba</alert-hello>
+    <alert-hello>Nasilsin</alert-hello>
+    <alert-hello></alert-hello>
+</div>
+
+<script src="../assets/js/vue.js"></script>
+<script>
+    Vue.component('alert-hello',{
+        data() {
+            return {
+                count:0
+               }
+             },
+             template: '<div class="alert alert-info">' +
+                 '<slot>Deneme</slot>' +
+                 '</div>'
+    });
+
+    var alertHello2={
+        data() {
+            return {
+                count:0
+            }
+        },
+        template: '<div class="alert-danger">Merhaba<button class="btn-danger" @click="count++"> {{count}} kez tıklandı </button></div>'
+    }
+    const app = new Vue({
+        el: '#app',
+        name: 'Test Vue Example',
+        data: {
+            mesaj:"Merhaba Vue",
+        },
+        components:{
+            'alert-hello-2':alertHello2,
+        }
+    })
+</script>
+</body>
+</html>

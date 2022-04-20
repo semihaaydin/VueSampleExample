@@ -1,6 +1,6 @@
 const app = new Vue({
     el: '#app',
-    name: 'Uzaktan Kurs',
+    name: 'Vue Deneme',
     data: {
         aktifKullanici: {},
         kullanicilar: [
